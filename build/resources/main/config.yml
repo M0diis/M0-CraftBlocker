@@ -1,13 +1,4 @@
-M0-Freeze:
-  NoPermission: '&4You do not have permission to use this command.'
-  ToStaffFreeze: '&2You successfully frozen the player.'
-  ToStaffUnfreeze: '&2You successfully unfrozen the player.'
-  ToPlayerFreeze: '&cYou have been frozen.'
-  ToPlayerUnfreeze: '&2You have been unfrozen.'
-  CantFreeze: '&cThis player cannot be frozen.'
-  NotFrozen: '&cThis player is not frozen.'
-  DenyJump: false
-  ActionBlocked: '&cYou cannot do that while you are frozen.'
-  BlockCommands: false
-  BlockedCommands:
-    - '/msg'
+M0-CraftBlocker:
+  CraftBlocked: '&4You cannot craft this item.'
+  BlockedItems:
+    - 'HOPPER'
