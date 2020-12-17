@@ -1,0 +1,4 @@
+M0-CraftBlocker:
+  CraftBlocked: '&4You cannot craft this item.'
+  BlockedItems:
+    - 'HOPPER'

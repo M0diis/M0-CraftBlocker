@@ -1,0 +1,25 @@
+name: M0-Freeze
+main: me.M0dii.Freeze.Main
+description: M0-Freeze
+version: 1.0
+api-version: 1.16
+author: M0dii
+commands:
+  freeze:
+    description: Freeze command.
+    permission: m0freeze.freeze
+    usage: /<command>
+  unfreeze:
+    description: Freeze command.
+    permission: m0freeze.freeze
+    usage: /<command>
+permissions:
+  m0freeze.freeze:
+    description: Access to the freeze command.
+    default: op
+  m0freeze.unfreeze:
+    description: Access to the unfreeze command.
+    default: op
+  m0freeze.bypass:
+    description: Bypass the freeze.
+    default: op
