@@ -38,11 +38,19 @@ public class CraftListener implements Listener
             
             String itemName = itemType.name().toLowerCase().trim();
     
-            String perm = "m0craftblocker." + itemName + ".allow";
-            
-            boolean hasPerm = pl.hasPermission(perm);
+            String allowPerm = "m0craftblocker." + itemName + ".allow";
+            String denyPerm = "m0craftblocker." + itemName + ".deny";
     
-            if(hasPerm) return;
+            if(pl.hasPermission(denyPerm))
+            {
+                e.getInventory().setResult(new ItemStack(Material.AIR));
+    
+                pl.sendMessage(Config.CANNOT_CRAFT);
+                
+                return;
+            }
+            
+            if(pl.hasPermission(allowPerm)) return;
             
             for(String item : Config.BLOCKED_ITEMS)
             {
