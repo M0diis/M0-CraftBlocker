@@ -15,7 +15,7 @@ public class Config
         FileConfiguration cfg = plugin.getConfig();
     
         CANNOT_CRAFT = format(cfg.getString("M0-CraftBlocker.CraftBlocked"));
-        BLOCKED_ITEMS = cfg.getStringList("M0-Freeze.BlockedItems");
+        BLOCKED_ITEMS = cfg.getStringList("M0-CraftBlocker.BlockedItems");
     }
     
     private static String format(String text)
