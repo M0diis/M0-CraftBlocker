@@ -40,6 +40,8 @@ public class Main extends JavaPlugin
         
         Config.load(this);
         
+        this.getCommand("craftblocker").setExecutor(new CommandHandler(this));
+        
         this.manager.registerEvents(new CraftListener(this), this);
     }
     

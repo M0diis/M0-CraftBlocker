@@ -1,10 +1,19 @@
 name: M0-CraftBlocker
 main: me.M0dii.CraftBlocker.Main
 description: M0-CraftBlocker
-version: 1.3
+version: 1.4
 api-version: 1.16
 author: M0dii
+commands:
+  craftblocker:
+    description: Main command
+    permission: m0craftblocker.reload
+    usage: /<command>
+    aliases: [m0craftblocker]
 permissions:
   m0craftblocker.bypass:
     description: Bypass the restriction.
+    default: op
+  m0craftblocker.reload:
+    description: Access to reload command.
     default: op

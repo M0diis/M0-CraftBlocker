@@ -8,6 +8,8 @@ import java.util.List;
 public class Config
 {
     public static String CANNOT_CRAFT;
+    public static String NO_PERMISSION;
+    public static String CONFIG_RELOADED;
     public static List<String> BLOCKED_ITEMS;
 
     public static void load(Main plugin)
@@ -15,6 +17,8 @@ public class Config
         FileConfiguration cfg = plugin.getConfig();
     
         CANNOT_CRAFT = format(cfg.getString("M0-CraftBlocker.CraftBlocked"));
+        CONFIG_RELOADED = format(cfg.getString("M0-CraftBlocker.ConfigReloaded"));
+        NO_PERMISSION = format(cfg.getString("M0-CraftBlocker.NoPermission"));
         BLOCKED_ITEMS = cfg.getStringList("M0-CraftBlocker.BlockedItems");
     }
     
