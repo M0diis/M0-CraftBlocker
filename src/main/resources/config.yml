@@ -3,4 +3,6 @@ M0-CraftBlocker:
   ConfigReloaded: '&2Config has been reloaded'
   CraftBlocked: '&4You cannot craft this item.'
   BlockedItems:
-    - 'HOPPER'
+    Whitelist: false # Set true for blacklist
+    Items:
+      - 'HOPPER'

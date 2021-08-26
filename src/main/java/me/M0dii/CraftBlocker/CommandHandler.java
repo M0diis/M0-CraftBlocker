@@ -9,9 +9,9 @@ import javax.annotation.Nonnull;
 
 public class CommandHandler implements CommandExecutor
 {
-    private final Main plugin;
+    private final CraftBlocker plugin;
     
-    public CommandHandler(Main plugin)
+    public CommandHandler(CraftBlocker plugin)
     {
         this.plugin = plugin;
     }

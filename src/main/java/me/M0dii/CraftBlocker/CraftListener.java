@@ -1,26 +1,19 @@
 package me.M0dii.CraftBlocker;
 
-import com.destroystokyo.paper.event.player.PlayerJumpEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
-import org.bukkit.permissions.Permission;
-
-import java.util.List;
 
 public class CraftListener implements Listener
 {
-    private final Main plugin;
+    private final CraftBlocker plugin;
     
-    public CraftListener(Main plugin)
+    public CraftListener(CraftBlocker plugin)
     {
         this.plugin = plugin;
     }
@@ -32,15 +25,29 @@ public class CraftListener implements Listener
     
         if(recipe != null)
         {
-            Material itemType = recipe.getResult().getType();
-            
             HumanEntity pl = e.getView().getPlayer();
             
+            if(!pl.hasPermission("m0craftblocker.bypass"))
+                return;
+    
+            if(pl.hasPermission("m0craftblocker.*.deny"))
+            {
+                e.getInventory().setResult(new ItemStack(Material.AIR));
+        
+                pl.sendMessage(Config.CANNOT_CRAFT);
+        
+                return;
+            }
+            
+            Material itemType = recipe.getResult().getType();
             String itemName = itemType.name().toLowerCase().trim();
     
             String allowPerm = "m0craftblocker." + itemName + ".allow";
             String denyPerm = "m0craftblocker." + itemName + ".deny";
     
+            if(pl.hasPermission(allowPerm))
+                return;
+            
             if(pl.hasPermission(denyPerm))
             {
                 e.getInventory().setResult(new ItemStack(Material.AIR));
@@ -50,22 +57,32 @@ public class CraftListener implements Listener
                 return;
             }
             
-            if(pl.hasPermission(allowPerm)) return;
-            
-            for(String item : Config.BLOCKED_ITEMS)
+            if(Config.WHITELIST)
             {
-                if(itemType == Material.getMaterial(item))
+                if(!Config.BLOCKED_ITEMS.contains(itemType))
                 {
                     for(HumanEntity p : e.getViewers())
                     {
                         if(p instanceof Player)
                         {
-                            if(!p.hasPermission("m0craftblocker.bypass"))
-                            {
-                                e.getInventory().setResult(new ItemStack(Material.AIR));
-
-                                p.sendMessage(Config.CANNOT_CRAFT);
-                            }
+                            e.getInventory().setResult(new ItemStack(Material.AIR));
+                
+                            p.sendMessage(Config.CANNOT_CRAFT);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if(Config.BLOCKED_ITEMS.contains(itemType))
+                {
+                    for(HumanEntity p : e.getViewers())
+                    {
+                        if(p instanceof Player)
+                        {
+                            e.getInventory().setResult(new ItemStack(Material.AIR));
+                
+                            p.sendMessage(Config.CANNOT_CRAFT);
                         }
                     }
                 }
