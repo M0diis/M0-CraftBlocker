@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Config
@@ -18,6 +19,8 @@ public class Config
     public static void load(CraftBlocker plugin)
     {
         FileConfiguration cfg = plugin.getConfig();
+        
+        BLOCKED_ITEMS = new ArrayList<>();
     
         CANNOT_CRAFT = format(cfg.getString("M0-CraftBlocker.CraftBlocked"));
         CONFIG_RELOADED = format(cfg.getString("M0-CraftBlocker.ConfigReloaded"));

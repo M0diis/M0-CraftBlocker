@@ -27,8 +27,8 @@ public class CraftBlocker extends JavaPlugin
         this.pm = getServer().getPluginManager();
     }
     
-    FileConfiguration config = null;
-    File configFile = null;
+    FileConfiguration config;
+    File configFile;
     
     public void onEnable()
     {
@@ -36,7 +36,8 @@ public class CraftBlocker extends JavaPlugin
     
         prepareConfig();
 
-        this.getCommand("craftblocker").setExecutor(new CommandHandler(this));
+        this.getCommand("craftblocker")
+                .setExecutor(new CommandHandler(this));
         
         this.pm.registerEvents(new CraftListener(this), this);
     

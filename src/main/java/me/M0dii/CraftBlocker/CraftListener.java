@@ -27,7 +27,7 @@ public class CraftListener implements Listener
         {
             HumanEntity pl = e.getView().getPlayer();
             
-            if(!pl.hasPermission("m0craftblocker.bypass"))
+            if(pl.hasPermission("m0craftblocker.bypass"))
                 return;
     
             if(pl.hasPermission("m0craftblocker.*.deny"))

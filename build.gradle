@@ -3,9 +3,8 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
-
 group 'me.M0dii'
-version '1.5.0'
+version '1.5.1'
 sourceCompatibility = '8'
 
 shadowJar {

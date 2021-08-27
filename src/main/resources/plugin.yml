@@ -1,7 +1,7 @@
 name: M0-CraftBlocker
 main: me.M0dii.CraftBlocker.CraftBlocker
 description: M0-CraftBlocker
-version: 1.5.0
+version: 1.5.1
 api-version: 1.13
 author: M0dii
 commands:
